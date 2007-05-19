@@ -1,5 +1,5 @@
 %define	name	stratagus
-%define	version 2.2.3
+%define	version 2.2.4
 %define rel	1
 %define	release	%mkrel %{rel}
 

@@ -10,6 +10,7 @@ Release:	%{release}
 Source0:	%{name}-%{version}-src.tar.gz
 URL:		http://stratagus.sourceforge.net/
 Group:		Games/Strategy
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPL
 BuildRequires:	SDL-devel bzip2-devel oggvorbis-devel libmikmod-devel
 BuildRequires:	lua-devel >= 5.1 libpng-devel libmng-devel

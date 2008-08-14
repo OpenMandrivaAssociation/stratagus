@@ -1,6 +1,6 @@
 %define	name	stratagus
 %define	version 2.2.4
-%define rel	1
+%define rel	2
 %define	release	%mkrel %{rel}
 
 Name:		%{name} 
@@ -26,7 +26,7 @@ wide-range of features specific to your needs.
 %setup -q
 
 %build
-%configure	--with-opengl \
+%configure2_5x	--with-opengl \
 		--with-x \
 		--with-bzip2 \
 		--with-vorbis \

@@ -8,6 +8,8 @@ Summary:	A real time strategy game engine
 Version:	%{version} 
 Release:	%{release} 
 Source0:	%{name}-%{version}-src.tar.gz
+Patch0:		stratagus-2.2.4-fix-str-fmt.patch
+Patch1:		stratagus-2.2.4-gcc44.patch
 URL:		http://stratagus.sourceforge.net/
 Group:		Games/Strategy
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -24,6 +26,8 @@ wide-range of features specific to your needs.
 
 %prep
 %setup -q
+%patch0 -p0
+%patch1 -p0
 
 %build
 %configure2_5x	--with-opengl \
@@ -35,7 +39,7 @@ wide-range of features specific to your needs.
 		--with-mng \
 		EXTRA_CFLAGS="%{optflags}"
 
-%make || make
+make
 
 %install
 rm -rf %{buildroot}

@@ -1,22 +1,28 @@
 %define	name	stratagus
-%define	version 2.2.4
-%define rel	4
+%define	version 2.2.5.5
+%define rel	1
 %define	release	%mkrel %{rel}
 
 Name:		%{name} 
 Summary:	A real time strategy game engine
 Version:	%{version} 
 Release:	%{release} 
-Source0:	%{name}-%{version}-src.tar.gz
-Patch0:		stratagus-2.2.4-fix-str-fmt.patch
-Patch1:		stratagus-2.2.4-gcc44.patch
+Source0:	http://launchpad.net/stratagus/trunk/%{version}/+download/%{name}_%{version}.orig.tar.gz
 URL:		http://stratagus.sourceforge.net/
 Group:		Games/Strategy
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPL
-BuildRequires:	SDL-devel bzip2-devel oggvorbis-devel libmikmod-devel
-BuildRequires:	lua-devel >= 5.1 libpng-devel libmng-devel
-BuildRequires:  MesaGLU-devel imagemagick libtheora-devel
+BuildRequires:	mesagl-devel
+BuildRequires:	SDL-devel
+BuildRequires:	bzip2-devel
+BuildRequires:	libx11-devel
+BuildRequires:	lua-devel
+BuildRequires:	libmikmod-devel
+BuildRequires:	libmng-devel
+BuildRequires:	oggvorbis-devel
+BuildRequires:	libtheora-devel
+BuildRequires:	libpng-devel
+BuildRequires:	zlib-devel
 
 %description
 Stratagus is a free cross-platform real-time strategy gaming engine.
@@ -26,10 +32,9 @@ wide-range of features specific to your needs.
 
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p0
 
 %build
+./autogen.sh
 %configure2_5x	--with-opengl \
 		--with-x \
 		--with-bzip2 \

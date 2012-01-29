@@ -19,6 +19,7 @@ BuildRequires:	libtheora-devel
 BuildRequires:	png-devel
 BuildRequires:	zlib-devel
 BuildRequires:	sqlite3-devel
+BuildRequires:	tolua++-devel
 
 %description
 Stratagus is a free cross-platform real-time strategy gaming engine.

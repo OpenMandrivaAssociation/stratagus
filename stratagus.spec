@@ -13,7 +13,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	libx11-devel
 BuildRequires:	lua-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	libmng-devel
+BuildRequires:	mng-devel
 BuildRequires:	oggvorbis-devel
 BuildRequires:	libtheora-devel
 BuildRequires:	png-devel

@@ -1,17 +1,12 @@
-%define	name	stratagus
-%define	version 2.2.5.5
-%define rel	1
-%define	release	%mkrel %{rel}
-
-Name:		%{name} 
+Name:		stratagus
 Summary:	A real time strategy game engine
-Version:	%{version} 
-Release:	%{release} 
+Version:	2.2.6
+Release:	%mkrel 1
 Source0:	http://launchpad.net/stratagus/trunk/%{version}/+download/%{name}_%{version}.orig.tar.gz
 URL:		http://stratagus.sourceforge.net/
 Group:		Games/Strategy
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-License:	GPL
+License:	GPLv2
+BuildRequires:	cmake
 BuildRequires:	mesagl-devel
 BuildRequires:	SDL-devel
 BuildRequires:	bzip2-devel
@@ -21,9 +16,9 @@ BuildRequires:	libmikmod-devel
 BuildRequires:	libmng-devel
 BuildRequires:	oggvorbis-devel
 BuildRequires:	libtheora-devel
-BuildRequires:	libpng-devel
+BuildRequires:	png-devel
 BuildRequires:	zlib-devel
-BuildRequires:	imagemagick
+BuildRequires:	sqlite3-devel
 
 %description
 Stratagus is a free cross-platform real-time strategy gaming engine.
@@ -31,43 +26,39 @@ It includes support for playing over the internet/LAN, or playing a computer
 opponent. The engine is configurable and can be used to create games with a
 wide-range of features specific to your needs.
 
+%package devel
+Summary:	Development files for %{name}
+Group:		Development/Other
+BuildArch:	noarch
+Requires:	%{name} = %{version}-%{release}
+
+%description devel
+This package contains development files for %{name}.
+
+
 %prep
-%setup -q
+%setup -q -n %{name}_%{version}.orig
 
 %build
-./autogen.sh
-%configure2_5x	--with-opengl \
-		--with-x \
-		--with-bzip2 \
-		--with-vorbis \
-		--with-mikmod \
-		--with-theora \
-		--with-mng \
-		EXTRA_CFLAGS="%{optflags}"
-
-make
+# default build options seem to be fine
+%cmake -DENABLE_DEV=ON
+%make
 
 %install
-rm -rf %{buildroot}
-install -m755 stratagus -D %{buildroot}%{_gamesbindir}/stratagus
+%__rm -rf %{buildroot}
+%makeinstall_std -C build
 
-# Create and install icons
-convert ./contrib/stratagus.ico -resize 32x32 ./stratagus-32.png
-convert ./contrib/stratagus.ico -resize 48x48 ./stratagus-48.png
-convert ./contrib/stratagus.ico -resize 16x16 ./stratagus-16.png
-install -m644 stratagus-16.png -D %{buildroot}%{_miconsdir}/%{name}.png
-install -m644 stratagus-32.png -D %{buildroot}%{_iconsdir}/%{name}.png
-install -m644 stratagus-48.png -D %{buildroot}%{_liconsdir}/%{name}.png
+%clean
+%__rm -rf %{buildroot}
 
-%clean 
-rm -rf %{buildroot}
-
-%files 
+%files
 %defattr(-,root,root)
 %doc README doc/*
-%{_gamesbindir}/*
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
+%{_gamesbindir}/%{name}
+%{_bindir}/png2stratagus
+%{_sbindir}/metaserver
 
+%files devel
+%defattr(-,root,root)
+%{_includedir}/%{name}*
 

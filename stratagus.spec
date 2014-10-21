@@ -10,7 +10,7 @@ BuildRequires:	cmake
 BuildRequires:	bzip2-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	lua5.1-devel
-BuildRequires:	pkgconfig(mng)
+BuildRequires:	pkgconfig(libmng)
 BuildRequires:	tolua++-devel
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)

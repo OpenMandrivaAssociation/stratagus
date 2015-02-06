@@ -1,7 +1,7 @@
 Name:		stratagus
 Summary:	A real time strategy game engine
 Version:	2.2.7
-Release:	2
+Release:	3
 Source0:	http://launchpad.net/stratagus/trunk/%{version}/+download/%{name}_%{version}.orig.tar.gz
 URL:		http://stratagus.sourceforge.net/
 Group:		Games/Strategy

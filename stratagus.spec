@@ -1,15 +1,16 @@
 Name:		stratagus
 Summary:	A real time strategy game engine
-Version:	2.2.7
-Release:	3
-Source0:	http://launchpad.net/stratagus/trunk/%{version}/+download/%{name}_%{version}.orig.tar.gz
-URL:		http://stratagus.sourceforge.net/
+Version:	3.0.0
+Release:	1
+Source0:	https://github.com/Wargus/stratagus/archive/v%{version}.tar.gz
+URL:		http://stratagus.com/
 Group:		Games/Strategy
 License:	GPLv2
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	bzip2-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	lua5.1-devel
+BuildRequires:	lua-devel
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	tolua++-devel
 BuildRequires:	pkgconfig(gl)
@@ -38,22 +39,20 @@ Requires:	%{name} = %{version}-%{release}
 This package contains development files for %{name}.
 
 %prep
-%setup -q -n %{name}_%{version}.orig
+%autosetup -p1
+# default build options seem to be fine
+%cmake -DENABLE_DEV=ON -G Ninja
 
 %build
-# default build options seem to be fine
-%cmake -DENABLE_DEV=ON
-%make
+%ninja_build -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 %files
-%doc README doc/*
+%doc doc/*
 %{_gamesbindir}/%{name}
 %{_bindir}/png2stratagus
-%{_sbindir}/metaserver
 
 %files devel
 %{_includedir}/%{name}*
-

@@ -46,6 +46,8 @@ This package contains development files for %{name}.
 %cmake -DENABLE_DEV=ON -G Ninja
 
 %build
+export CC=gcc
+export CXX=g++
 %ninja_build -C build
 
 %install

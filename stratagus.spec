@@ -11,6 +11,7 @@ BuildRequires:	ninja
 BuildRequires:	bzip2-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	lua-devel
+BuildRequires:	stdc++-static-devel
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	tolua++-devel
 BuildRequires:	pkgconfig(gl)

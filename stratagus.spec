@@ -1,6 +1,6 @@
 Name:		stratagus
 Summary:	A real time strategy game engine
-Version:	3.2.0
+Version:	3.3.2
 Release:	1
 Source0:	https://github.com/Wargus/stratagus/archive/v%{version}/%{name}-%{version}.tar.gz
 URL:		http://stratagus.com/
@@ -11,6 +11,7 @@ BuildRequires:	ninja
 BuildRequires:	bzip2-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	lua-devel
+BuildRequires:	stdc++-static-devel
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	tolua++-devel
 BuildRequires:	pkgconfig(gl)

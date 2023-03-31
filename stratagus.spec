@@ -1,7 +1,7 @@
 Name:		stratagus
 Summary:	A real time strategy game engine
 Version:	3.3.2
-Release:	1
+Release:	2
 Source0:	https://github.com/Wargus/stratagus/archive/v%{version}/%{name}-%{version}.tar.gz
 URL:		http://stratagus.com/
 Group:		Games/Strategy
